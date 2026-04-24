@@ -1,0 +1,83 @@
+graph TB
+    subgraph Frontend["FRONTEND (React + TypeScript)"]
+        UI["Patient Dashboard UI"]
+        UC["Update Patient Modal"]
+        PC["Patient Card"]
+        API_CLI["API Client"]
+        STORE["State Store"]
+    end
+
+    subgraph Backend["BACKEND (FastAPI)"]
+        ROUTES["Patient Routes"]
+        PROCESS["Process Vitals Pipeline"]
+        RULES["Rules Engine"]
+        SCORE["Scoring Engine"]
+        ALERT["Alert Service"]
+        LLM["LLM Service"]
+    end
+
+    subgraph Database["DATABASE"]
+        MONGO["MongoDB Atlas"]
+        COLLECTIONS["patients / audit_logs"]
+    end
+
+    subgraph UpdateFlow["UPDATE FLOW"]
+        CLICK["1. Click Update"]
+        MODAL["2. Open Modal"]
+        SUBMIT["3. Submit Form"]
+        VALIDATE["4. Validate Data"]
+        API_CALL["5. PUT /patient/{id}"]
+        FIND["6. Find Patient"]
+        PIPELINE["7. Recompute (Rules + Score + Severity + LLM)"]
+        PERSIST["8. Save to DB"]
+        RETURN["9. Return Response"]
+        REFRESH["10. Refresh Dashboard"]
+        DISPLAY["11. Update UI"]
+    end
+
+    subgraph DataStructure["PAYLOAD"]
+        PAYLOAD["Vitals + Symptoms + Notes"]
+    end
+
+    subgraph Response["RESPONSE"]
+        RESP["Patient Response with score, severity, llm_output"]
+    end
+
+    %% Frontend flow
+    UI --> PC
+    PC --> UC
+    UC --> API_CLI
+    API_CLI --> STORE
+    STORE --> UI
+
+    %% API call
+    API_CLI --> ROUTES
+
+    %% Backend flow
+    ROUTES --> PROCESS
+    PROCESS --> RULES
+    RULES --> SCORE
+    SCORE --> ALERT
+    ALERT --> LLM
+    LLM --> PROCESS
+
+    %% DB
+    PROCESS --> MONGO
+    MONGO --> COLLECTIONS
+
+    %% Response flow
+    PROCESS --> API_CLI
+    API_CLI --> STORE
+    STORE --> UI
+
+    %% Update sequence
+    CLICK --> MODAL
+    MODAL --> SUBMIT
+    SUBMIT --> VALIDATE
+    VALIDATE --> API_CALL
+    API_CALL --> FIND
+    FIND --> PIPELINE
+    PIPELINE --> PERSIST
+    PERSIST --> RETURN
+    RETURN --> REFRESH
+    REFRESH --> DISPLAY

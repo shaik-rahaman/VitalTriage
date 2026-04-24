@@ -1,0 +1,39 @@
+graph TB
+    Frontend["Frontend<br/>(React)"] -->|API Calls| API["FastAPI Server<br/>Port 8000"]
+    
+    API --> Health["/api/v1/health<br/>GET<br/>Returns: status"]
+    
+    API --> Dashboard["/api/v1/dashboard<br/>GET<br/>Returns: DashboardResponse"]
+    
+    API --> CreatePat["/api/v1/patient<br/>POST<br/>Payload: CreatePatientRequest"]
+    
+    API --> GetPat["/api/v1/patient/{id}<br/>GET<br/>Returns: PatientResponse"]
+    
+    API --> UpdatePat["/api/v1/patient/{id}<br/>PUT<br/>Payload: UpdatePatientRequest"]
+    
+    API --> ListPat["/api/v1/patients<br/>GET<br/>Returns: Patient[]"]
+    
+    API --> DeletePat["/api/v1/patient/{id}<br/>DELETE"]
+    
+    Health -->|Check service health| HealthDB["✓ Confirms API is running"]
+    
+    Dashboard -->|Fetch all patients<br/>Grouped by severity| DashDB["MongoDB Query<br/>Returns:<br/>critical: [],<br/>high: [],<br/>moderate: [],<br/>stable: []"]
+    
+    CreatePat -->|Process vitals +<br/>Save to DB| CreateDB["🔄 Pipeline:<br/>1. Rules check<br/>2. Score calc<br/>3. Alert gen<br/>4. LLM call<br/>5. Save patient"]
+    
+    GetPat -->|Retrieve one patient| GetDB["MongoDB Query<br/>By patient_id<br/>Returns full record"]
+    
+    UpdatePat -->|Reprocess vitals +<br/>Update document| UpdateDB["🔄 Pipeline:<br/>1. Find patient<br/>2. Rules check<br/>3. Score recalc<br/>4. Severity reassess<br/>5. LLM regenerate<br/>6. Update MongoDB"]
+    
+    ListPat -->|Get all patients| ListDB["MongoDB Query<br/>Returns all records"]
+    
+    DeletePat -->|Remove patient| DelDB["MongoDB Delete<br/>By patient_id"]
+    
+    DashDB -->|← Response| Dashboard
+    CreateDB -->|← PatientResponse| CreatePat
+    GetDB -->|← PatientResponse| GetPat
+    UpdateDB -->|← PatientResponse| UpdatePat
+    ListDB -->|← Patient[]| ListPat
+    DelDB -->|← 204 OK| DeletePat
+    
+    UpdateDB -->|FIXED!| Fix["✅ Now uses patient_id<br/>✅ Recalculates all fields<br/>✅ Refreshes dashboard<br/>✅ Shows success message"]

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: vitaltriage_mongo
+    environment:
+      MONGO_INITDB_DATABASE: vitaltriage_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - vitaltriage_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  vitaltriage_network:
+    driver: bridge

@@ -1,0 +1,419 @@
+{
+  "info": {
+    "name": "VitalTriage API",
+    "description": "AI Patient Monitoring System - API Collection for vital signs assessment and risk scoring",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Patient Management",
+      "item": [
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 88,\n    \"spo2\": 94,\n    \"systolic_bp\": 140,\n    \"diastolic_bp\": 90,\n    \"temperature\": 99.5,\n    \"respiratory_rate\": 20\n  },\n  \"symptoms\": [\n    \"fever\",\n    \"cough\"\n  ],\n  \"notes\": \"Initial assessment - patient presenting with respiratory symptoms\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            },
+            "description": "Create a new patient record with vital signs and initial assessment"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 88,\n    \"spo2\": 94,\n    \"systolic_bp\": 140,\n    \"diastolic_bp\": 90,\n    \"temperature\": 99.5,\n    \"respiratory_rate\": 20\n  },\n  \"symptoms\": [\"fever\"],\n  \"notes\": \"Initial assessment\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/patient",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "patient"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 88,\n    \"spo2\": 94,\n    \"systolic_bp\": 140,\n    \"diastolic_bp\": 90,\n    \"temperature\": 99.5,\n    \"respiratory_rate\": 20\n  },\n  \"symptoms\": [\"fever\"],\n  \"score\": 45,\n  \"severity\": \"MODERATE\",\n  \"alert\": \"⚠️ Moderate risk - Monitor closely\",\n  \"explanation\": \"Patient shows moderate vital sign abnormalities with fever. Close monitoring recommended.\",\n  \"timestamp\": \"2026-04-23T12:00:00Z\",\n  \"_id\": \"507f1f77bcf86cd799439011\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Patient by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient/P001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient",
+                "P001"
+              ]
+            },
+            "description": "Retrieve patient details by patient ID"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/patient/P001",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "patient",
+                    "P001"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 88,\n    \"spo2\": 94,\n    \"systolic_bp\": 140,\n    \"diastolic_bp\": 90,\n    \"temperature\": 99.5,\n    \"respiratory_rate\": 20\n  },\n  \"symptoms\": [\"fever\"],\n  \"score\": 45,\n  \"severity\": \"MODERATE\",\n  \"alert\": \"⚠️ Moderate risk - Monitor closely\",\n  \"explanation\": \"Patient shows moderate vital sign abnormalities with fever. Close monitoring recommended.\",\n  \"timestamp\": \"2026-04-23T12:00:00Z\",\n  \"_id\": \"507f1f77bcf86cd799439011\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Patient Vitals",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vitals\": {\n    \"heart_rate\": 95,\n    \"spo2\": 91,\n    \"systolic_bp\": 155,\n    \"diastolic_bp\": 95,\n    \"temperature\": 101.2,\n    \"respiratory_rate\": 25\n  },\n  \"symptoms\": [\n    \"fever\",\n    \"cough\",\n    \"difficulty_breathing\"\n  ],\n  \"notes\": \"Vitals deteriorated - increased respiratory rate and fever\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient/P001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient",
+                "P001"
+              ]
+            },
+            "description": "Update patient vital signs and notes"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vitals\": {\n    \"heart_rate\": 95,\n    \"spo2\": 91,\n    \"systolic_bp\": 155,\n    \"diastolic_bp\": 95,\n    \"temperature\": 101.2,\n    \"respiratory_rate\": 25\n  },\n  \"symptoms\": [\"fever\", \"cough\"],\n  \"notes\": \"Updated vitals\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/patient/P001",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "patient",
+                    "P001"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 95,\n    \"spo2\": 91,\n    \"systolic_bp\": 155,\n    \"diastolic_bp\": 95,\n    \"temperature\": 101.2,\n    \"respiratory_rate\": 25\n  },\n  \"symptoms\": [\"fever\", \"cough\", \"difficulty_breathing\"],\n  \"score\": 68,\n  \"severity\": \"HIGH\",\n  \"alert\": \"🔴 High risk - Immediate attention required\",\n  \"explanation\": \"Patient shows significant vital sign deterioration with high fever and elevated respiratory rate. Immediate clinical assessment needed.\",\n  \"timestamp\": \"2026-04-23T12:15:00Z\",\n  \"_id\": \"507f1f77bcf86cd799439011\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/dashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "dashboard"
+              ]
+            },
+            "description": "Get dashboard with all patients grouped by severity level"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/dashboard",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "dashboard"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"critical_count\": 1,\n  \"high_count\": 2,\n  \"moderate_count\": 3,\n  \"stable_count\": 2,\n  \"critical\": [\n    {\n      \"patient_id\": \"P005\",\n      \"age\": 72,\n      \"gender\": \"F\",\n      \"score\": 85,\n      \"severity\": \"CRITICAL\",\n      \"alert\": \"🚨 CRITICAL - Emergency intervention required\",\n      \"timestamp\": \"2026-04-23T12:00:00Z\"\n    }\n  ],\n  \"high\": [\n    {\n      \"patient_id\": \"P001\",\n      \"age\": 65,\n      \"gender\": \"M\",\n      \"score\": 68,\n      \"severity\": \"HIGH\",\n      \"alert\": \"🔴 High risk - Immediate attention required\",\n      \"timestamp\": \"2026-04-23T12:15:00Z\"\n    },\n    {\n      \"patient_id\": \"P003\",\n      \"age\": 58,\n      \"gender\": \"F\",\n      \"score\": 62,\n      \"severity\": \"HIGH\",\n      \"alert\": \"🔴 High risk - Immediate attention required\",\n      \"timestamp\": \"2026-04-23T11:50:00Z\"\n    }\n  ],\n  \"moderate\": [\n    {\n      \"patient_id\": \"P002\",\n      \"age\": 45,\n      \"gender\": \"M\",\n      \"score\": 48,\n      \"severity\": \"MODERATE\",\n      \"alert\": \"⚠️ Moderate risk - Monitor closely\",\n      \"timestamp\": \"2026-04-23T11:30:00Z\"\n    },\n    {\n      \"patient_id\": \"P004\",\n      \"age\": 52,\n      \"gender\": \"F\",\n      \"score\": 40,\n      \"severity\": \"MODERATE\",\n      \"alert\": \"⚠️ Moderate risk - Monitor closely\",\n      \"timestamp\": \"2026-04-23T12:05:00Z\"\n    },\n    {\n      \"patient_id\": \"P006\",\n      \"age\": 40,\n      \"gender\": \"M\",\n      \"score\": 35,\n      \"severity\": \"MODERATE\",\n      \"alert\": \"⚠️ Moderate risk - Monitor closely\",\n      \"timestamp\": \"2026-04-23T11:45:00Z\"\n    }\n  ],\n  \"stable\": [\n    {\n      \"patient_id\": \"P007\",\n      \"age\": 35,\n      \"gender\": \"F\",\n      \"score\": 15,\n      \"severity\": \"STABLE\",\n      \"alert\": \"✅ Stable - Routine monitoring\",\n      \"timestamp\": \"2026-04-23T12:20:00Z\"\n    },\n    {\n      \"patient_id\": \"P008\",\n      \"age\": 50,\n      \"gender\": \"M\",\n      \"score\": 20,\n      \"severity\": \"STABLE\",\n      \"alert\": \"✅ Stable - Routine monitoring\",\n      \"timestamp\": \"2026-04-23T11:55:00Z\"\n    }\n  ],\n  \"timestamp\": \"2026-04-23T12:25:00Z\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test Scenarios",
+      "item": [
+        {
+          "name": "Create CRITICAL Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"P_CRITICAL_001\",\n  \"age\": 75,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 145,\n    \"spo2\": 82,\n    \"systolic_bp\": 88,\n    \"diastolic_bp\": 55,\n    \"temperature\": 105.5,\n    \"respiratory_rate\": 35\n  },\n  \"symptoms\": [\n    \"severe_shortness_of_breath\",\n    \"chest_pain\",\n    \"confusion\"\n  ],\n  \"notes\": \"CRITICAL CONDITION - All critical thresholds exceeded\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            },
+            "description": "Test case: Create a patient with CRITICAL severity (score ≥80)"
+          }
+        },
+        {
+          "name": "Create STABLE Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"P_STABLE_001\",\n  \"age\": 30,\n  \"gender\": \"F\",\n  \"vitals\": {\n    \"heart_rate\": 72,\n    \"spo2\": 98,\n    \"systolic_bp\": 118,\n    \"diastolic_bp\": 78,\n    \"temperature\": 98.6,\n    \"respiratory_rate\": 16\n  },\n  \"symptoms\": [],\n  \"notes\": \"Routine checkup - all vitals normal\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            },
+            "description": "Test case: Create a patient with STABLE severity (score <30)"
+          }
+        },
+        {
+          "name": "Create HIGH RISK Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"P_HIGH_001\",\n  \"age\": 60,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 115,\n    \"spo2\": 89,\n    \"systolic_bp\": 165,\n    \"diastolic_bp\": 100,\n    \"temperature\": 102.0,\n    \"respiratory_rate\": 28\n  },\n  \"symptoms\": [\n    \"chest_discomfort\",\n    \"shortness_of_breath\"\n  ],\n  \"notes\": \"Patient with multiple high-risk vital signs\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            },
+            "description": "Test case: Create a patient with HIGH severity (score 60-79)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bulk Testing",
+      "item": [
+        {
+          "name": "Create Patient - Template 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"TEST_P001\",\n  \"age\": 55,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 92,\n    \"spo2\": 95,\n    \"systolic_bp\": 135,\n    \"diastolic_bp\": 85,\n    \"temperature\": 99.0,\n    \"respiratory_rate\": 18\n  },\n  \"symptoms\": [\"mild_headache\"],\n  \"notes\": \"Routine monitoring\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Patient - Template 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": \"TEST_P002\",\n  \"age\": 68,\n  \"gender\": \"F\",\n  \"vitals\": {\n    \"heart_rate\": 105,\n    \"spo2\": 92,\n    \"systolic_bp\": 145,\n    \"diastolic_bp\": 92,\n    \"temperature\": 100.5,\n    \"respiratory_rate\": 22\n  },\n  \"symptoms\": [\"fever\", \"fatigue\"],\n  \"notes\": \"Patient with elevated vitals\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/patient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "patient"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}

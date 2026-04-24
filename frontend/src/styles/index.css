@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/30 backdrop-blur-md border border-white/20 rounded-lg;
+  }
+
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .status-critical {
+    @apply status-badge bg-red-100 text-red-800;
+  }
+
+  .status-high {
+    @apply status-badge bg-orange-100 text-orange-800;
+  }
+
+  .status-moderate {
+    @apply status-badge bg-yellow-100 text-yellow-800;
+  }
+
+  .status-stable {
+    @apply status-badge bg-green-100 text-green-800;
+  }
+}
