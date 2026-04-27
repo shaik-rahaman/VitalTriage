@@ -25,7 +25,7 @@
 
 ### Base URL
 ```
-http://localhost:8000
+http://localhost:8002
 ```
 
 ### Available Endpoints
@@ -178,7 +178,7 @@ Run: `Create CRITICAL Patient`
 ## ⚙️ Using Environment Variables
 
 ### Available Variables:
-- `{{baseUrl}}` → `http://localhost:8000`
+- `{{baseUrl}}` → `http://localhost:8002`
 - `{{patientId}}` → `P001` (change as needed)
 - `{{contentType}}` → `application/json`
 
@@ -268,7 +268,7 @@ Invalid values will return `400 Bad Request`
 
 - **Collection:** `VitalTriage_API.postman_collection.json`
 - **Environment:** `VitalTriage_Environment.postman_environment.json`
-- **API Docs:** http://localhost:8000/docs (Swagger UI)
+- **API Docs:** http://localhost:8002/docs (Swagger UI)
 - **API Code:** `app/routes/patient_routes.py`
 
 ---
@@ -277,7 +277,7 @@ Invalid values will return `400 Bad Request`
 
 For issues or questions:
 1. Check API logs: See server terminal output
-2. Test in Swagger UI: http://localhost:8000/docs
+2. Test in Swagger UI: http://localhost:8002/docs
 3. Review backend code: `backend/app/routes/`
 
 ---

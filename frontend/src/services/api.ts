@@ -3,7 +3,7 @@ import type { Patient, DashboardData, CreatePatientRequest, UpdatePatientRequest
 
 // Type assertion for Vite env variables
 const env = (import.meta as any).env as any;
-const API_BASE_URL = (env.VITE_API_BASE_URL as string) || 'http://localhost:8000';
+const API_BASE_URL = (env.VITE_API_BASE_URL as string) || 'http://localhost:8002';
 const API_TIMEOUT = parseInt((env.VITE_API_TIMEOUT as string) || '10000', 10);
 
 class APIClient {

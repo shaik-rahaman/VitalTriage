@@ -151,7 +151,7 @@ npm run dev
 
 ### Access
 - **URL**: http://localhost:5173
-- **Backend API**: http://localhost:8000
+- **Backend API**: http://localhost:8002
 - **Hot Reload**: Enabled ✅
 
 ### Build
@@ -317,7 +317,7 @@ Production build ready with:
 ### Setup
 - [ ] Run `npm install`
 - [ ] Copy `.env.example` to `.env`
-- [ ] Start backend API on `:8000`
+- [ ] Start backend API on `:8002`
 - [ ] Run `npm run dev`
 
 ### Verification

@@ -18,7 +18,7 @@ That's it! Open **http://localhost:5173** in your browser.
 ## ✅ Prerequisites
 
 - Node.js 16+
-- Backend API running at `http://localhost:8000`
+- Backend API running at `http://localhost:8002`
 
 ## 🎯 What You'll See
 
@@ -32,7 +32,7 @@ A hospital dashboard with:
 
 Create `.env` file:
 ```env
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8002
 VITE_API_TIMEOUT=10000
 ```
 
@@ -70,7 +70,7 @@ npm run dev
 ```
 
 ### Can't connect to API?
-1. Verify backend is running on `http://localhost:8000`
+1. Verify backend is running on `http://localhost:8002`
 2. Check CORS is enabled on backend
 3. Update `VITE_API_BASE_URL` in `.env` if needed
 

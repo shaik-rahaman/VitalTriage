@@ -69,14 +69,14 @@ OPENAI_API_KEY=sk_...               # Optional: Get from https://platform.openai
 ### 4. Run the Server
 
 ```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8002
 ```
 
-The API will be available at: `http://localhost:8000`
+The API will be available at: `http://localhost:8002`
 
-- **API Docs**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-- **Health Check**: http://localhost:8000/api/v1/health
+- **API Docs**: http://localhost:8002/docs
+- **ReDoc**: http://localhost:8002/redoc
+- **Health Check**: http://localhost:8002/api/v1/health
 
 ## 📡 API Endpoints
 
@@ -225,7 +225,7 @@ Similar logic applied to HR, BP, Temperature, RR
 
 ### Example 1: Critical Patient
 ```bash
-curl -X POST "http://localhost:8000/api/v1/patient" \
+curl -X POST "http://localhost:8002/api/v1/patient" \
   -H "Content-Type: application/json" \
   -d '{
     "patient_id": "P_CRITICAL_001",
@@ -246,7 +246,7 @@ curl -X POST "http://localhost:8000/api/v1/patient" \
 
 ### Example 2: Stable Patient
 ```bash
-curl -X POST "http://localhost:8000/api/v1/patient" \
+curl -X POST "http://localhost:8002/api/v1/patient" \
   -H "Content-Type: application/json" \
   -d '{
     "patient_id": "P_STABLE_001",
@@ -267,7 +267,7 @@ curl -X POST "http://localhost:8000/api/v1/patient" \
 
 ### Example 3: Get Dashboard
 ```bash
-curl -X GET "http://localhost:8000/api/v1/dashboard" \
+curl -X GET "http://localhost:8002/api/v1/dashboard" \
   -H "Content-Type: application/json"
 ```
 

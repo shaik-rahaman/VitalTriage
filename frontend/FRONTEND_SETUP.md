@@ -61,7 +61,7 @@ frontend/
 ### Prerequisites
 - Node.js 16+ (recommended: 18 LTS)
 - npm 7+ or yarn
-- Backend API running on `http://localhost:8000`
+- Backend API running on `http://localhost:8002`
 
 ### Installation Steps
 
@@ -110,7 +110,7 @@ This creates an optimized build in the `dist/` directory.
 ### Environment Variables (.env)
 ```env
 # Backend API configuration
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8002
 VITE_API_TIMEOUT=10000  # milliseconds
 ```
 
@@ -512,7 +512,7 @@ For issues or improvements:
 
 - [ ] Node.js 16+ installed
 - [ ] Dependencies installed: `npm install`
-- [ ] Backend API running on `:8000`
+- [ ] Backend API running on `:8002`
 - [ ] Environment file created: `.env`
 - [ ] Dev server started: `npm run dev`
 - [ ] Frontend accessible at `http://localhost:5174`

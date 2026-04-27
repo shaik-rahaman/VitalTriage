@@ -7,7 +7,7 @@ A modern, hospital-grade real-time patient monitoring dashboard built with React
 ### Prerequisites
 - Node.js 16+ 
 - npm or yarn
-- Backend API running on `http://localhost:8000`
+- Backend API running on `http://localhost:8002`
 
 ### Installation
 
@@ -82,7 +82,7 @@ src/
 
 ### Environment Variables
 ```env
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8002
 VITE_API_TIMEOUT=10000
 ```
 
@@ -195,7 +195,7 @@ store.setRefreshInterval(10000);    // Change interval to 10 seconds
 ## 🐛 Troubleshooting
 
 ### API Connection Issues
-1. Ensure backend is running on `http://localhost:8000`
+1. Ensure backend is running on `http://localhost:8002`
 2. Check `VITE_API_BASE_URL` in `.env`
 3. Verify CORS is enabled on backend
 

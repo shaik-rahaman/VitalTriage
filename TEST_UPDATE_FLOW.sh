@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-API_BASE="http://localhost:8000/api/v1"
+API_BASE="http://localhost:8002/api/v1"
 TEST_PATIENT_ID="P_UPDATE_TEST_$(date +%s)"
 
 echo -e "${BLUE}Step 1: Check health endpoint${NC}"

@@ -54,12 +54,12 @@
                   "raw": "{\n  \"patient_id\": \"P001\",\n  \"age\": 65,\n  \"gender\": \"M\",\n  \"vitals\": {\n    \"heart_rate\": 88,\n    \"spo2\": 94,\n    \"systolic_bp\": 140,\n    \"diastolic_bp\": 90,\n    \"temperature\": 99.5,\n    \"respiratory_rate\": 20\n  },\n  \"symptoms\": [\"fever\"],\n  \"notes\": \"Initial assessment\"\n}"
                 },
                 "url": {
-                  "raw": "http://localhost:8000/api/v1/patient",
+                  "raw": "http://localhost:8002/api/v1/patient",
                   "protocol": "http",
                   "host": [
                     "localhost"
                   ],
-                  "port": "8000",
+                  "port": "8002",
                   "path": [
                     "api",
                     "v1",
@@ -105,12 +105,12 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:8000/api/v1/patient/P001",
+                  "raw": "http://localhost:8002/api/v1/patient/P001",
                   "protocol": "http",
                   "host": [
                     "localhost"
                   ],
-                  "port": "8000",
+                  "port": "8002",
                   "path": [
                     "api",
                     "v1",
@@ -177,12 +177,12 @@
                   "raw": "{\n  \"vitals\": {\n    \"heart_rate\": 95,\n    \"spo2\": 91,\n    \"systolic_bp\": 155,\n    \"diastolic_bp\": 95,\n    \"temperature\": 101.2,\n    \"respiratory_rate\": 25\n  },\n  \"symptoms\": [\"fever\", \"cough\"],\n  \"notes\": \"Updated vitals\"\n}"
                 },
                 "url": {
-                  "raw": "http://localhost:8000/api/v1/patient/P001",
+                  "raw": "http://localhost:8002/api/v1/patient/P001",
                   "protocol": "http",
                   "host": [
                     "localhost"
                   ],
-                  "port": "8000",
+                  "port": "8002",
                   "path": [
                     "api",
                     "v1",
@@ -228,12 +228,12 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:8000/api/v1/dashboard",
+                  "raw": "http://localhost:8002/api/v1/dashboard",
                   "protocol": "http",
                   "host": [
                     "localhost"
                   ],
-                  "port": "8000",
+                  "port": "8002",
                   "path": [
                     "api",
                     "v1",
@@ -412,7 +412,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:8000",
+      "value": "http://localhost:8002",
       "type": "string"
     }
   ]

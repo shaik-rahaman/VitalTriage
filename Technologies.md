@@ -3878,7 +3878,7 @@ Return grouped patients:
 5. Verify API Works
 Test:
 
-http://localhost:8000/dashboard
+http://localhost:8002/dashboard
 Must return 200 OK
 
 📦 Output Required

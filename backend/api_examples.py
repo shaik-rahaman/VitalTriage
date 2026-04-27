@@ -7,7 +7,7 @@ import asyncio
 import httpx
 import json
 
-BASE_URL = "http://localhost:8000/api/v1"
+BASE_URL = "http://localhost:8002/api/v1"
 
 
 async def example_1_create_stable_patient():

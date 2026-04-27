@@ -4,12 +4,12 @@
 # VitalTriage API Manual Testing Script
 # ============================================================================
 # This script tests all API endpoints with curl commands.
-# Run this after starting the backend server on port 8000
+# Run this after starting the backend server on port 8002
 # ============================================================================
 
 set -e
 
-API_BASE_URL="${API_BASE_URL:-http://localhost:8000}"
+API_BASE_URL="${API_BASE_URL:-http://localhost:8002}"
 API_V1="$API_BASE_URL/api/v1"
 
 # Color codes for output

@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 client/node_modules/
-
+__pycache__
+‸
 # Environment variables
 .env
 
@@ -32,3 +33,4 @@ server/temp-*.js
 
 # Test coverage
 coverage/
+

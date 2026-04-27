@@ -114,7 +114,7 @@ Validation:
 ## 🔌 API Integration
 
 Base URL:
-http://localhost:8000
+http://localhost:8002
 
 ### Endpoints:
 

@@ -1,7 +1,7 @@
 import requests
 import json
 
-BASE_URL = "http://localhost:8000/api/v1"
+BASE_URL = "http://localhost:8002/api/v1"
 
 # Test data with high-risk vitals
 patient_data = {

@@ -27,7 +27,7 @@ A full-stack hospital patient monitoring system with AI-powered risk assessment.
 ```bash
 cd backend
 source .venv/bin/activate
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8002
 ```
 
 ### Step 2: Start Frontend (Terminal 2)
@@ -104,7 +104,7 @@ MONGO_DB_NAME=vitaltriage_db
 OPENAI_API_KEY=sk_your_key_here
 
 # Server Configuration
-PORT=8000
+PORT=8002
 HOST=0.0.0.0
 ENVIRONMENT=development
 ```
@@ -139,13 +139,13 @@ docker run -d -p 27017:27017 --name vitaltriage-mongo mongo:latest
 
 ```bash
 source .venv/bin/activate
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8002
 ```
 
 **Success indicators:**
-- Terminal shows: `Uvicorn running on http://0.0.0.0:8000`
-- Can access http://localhost:8000/docs (API documentation)
-- Can access http://localhost:8000/api/v1/health (health check)
+- Terminal shows: `Uvicorn running on http://0.0.0.0:8002`
+- Can access http://localhost:8002/docs (API documentation)
+- Can access http://localhost:8002/api/v1/health (health check)
 
 ### Backend File Structure
 ```
@@ -203,7 +203,7 @@ cp .env.example .env
 Edit `.env` file:
 ```env
 # Backend API Configuration
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8002
 VITE_API_TIMEOUT=10000
 ```
 
@@ -269,7 +269,7 @@ frontend/
 ### Backend Running?
 ```bash
 # Test backend is running
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8002/api/v1/health
 
 # Expected response:
 # {"status":"healthy","timestamp":"2024-04-23T12:34:56"}
@@ -286,7 +286,7 @@ open http://localhost:5173
 
 ### Can Create Patient?
 ```bash
-curl -X POST http://localhost:8000/api/v1/patient \
+curl -X POST http://localhost:8002/api/v1/patient \
   -H "Content-Type: application/json" \
   -d '{
     "patient_id": "P001",
@@ -353,10 +353,10 @@ docker run -d -p 27017:27017 --name vitaltriage-mongo mongo:latest
 mongosh
 ```
 
-#### Port 8000 already in use
+#### Port 8002 already in use
 ```bash
-# Find process using port 8000
-lsof -i :8000
+# Find process using port 8002
+lsof -i :8002
 
 # Kill process (if needed)
 kill -9 <PID>
@@ -380,7 +380,7 @@ brew install node
 cp .env.example .env
 
 # Update with correct API URL
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8002
 ```
 
 #### Port 5173 already in use
@@ -398,7 +398,7 @@ npm run dev -- --port 5174
 #### API calls failing
 ```bash
 # Verify backend is running
-curl http://localhost:8000/api/v1/health
+curl http://localhost:8002/api/v1/health
 
 # Check browser console for errors
 # Open DevTools: F12
@@ -433,7 +433,7 @@ ls dist/
 ```
 
 ### View API Documentation
-Open browser to: http://localhost:8000/docs
+Open browser to: http://localhost:8002/docs
 
 ### Clear Node Modules (if issues)
 ```bash
@@ -470,10 +470,10 @@ brew services start mongodb-community
 │  └─────────────────────────────────────────────┘   │
 └──────────────────┬──────────────────────────────────┘
                    │ HTTP (Axios)
-                   │ Port 8000
+                   │ Port 8002
                    ▼
 ┌─────────────────────────────────────────────────────┐
-│         FastAPI Backend (localhost:8000)            │
+│         FastAPI Backend (localhost:8002)            │
 │  ┌─────────────────────────────────────────────┐   │
 │  │      REST API Endpoints                      │   │
 │  │  - /api/v1/dashboard (patient grouping)     │   │
@@ -517,7 +517,7 @@ brew services start mongodb-community
    - See alerts for critical patients
 
 4. **Explore API**
-   - Visit http://localhost:8000/docs
+   - Visit http://localhost:8002/docs
    - Try different endpoints
    - Read API documentation
 
@@ -542,7 +542,7 @@ tail -f ~/.npm/_logs/*
 ### Review Documentation
 - Backend: `backend/README.md`
 - Frontend: `frontend/README.md`
-- API Docs: http://localhost:8000/docs
+- API Docs: http://localhost:8002/docs
 - Setup Details: `frontend/FRONTEND_SETUP.md`
 
 ### Common Fixes

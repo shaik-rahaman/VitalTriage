@@ -28,7 +28,7 @@ import sys
 from datetime import datetime
 
 # Test configuration
-API_BASE = "http://localhost:8000/api/v1"
+API_BASE = "http://localhost:8002/api/v1"
 PATIENT_ID = "HEALTHCARE_TEST_P001"
 
 # Critical vitals that require CRITICAL severity classification
