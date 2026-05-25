@@ -1,397 +1,344 @@
-# VitalTriage - AI Patient Monitoring System Backend
+# 🚑 VitalTriage
 
-A production-ready FastAPI backend for the VitalTriage AI Patient Monitoring System. This system accepts patient vitals, computes risk scores, applies clinical decision rules, and uses LLM for patient condition explanations.
+AI-powered Clinical Decision & Triage Intelligence Platform designed for real-time patient risk assessment, intelligent triage workflows, and AI-assisted clinical decision support.
 
-## 🎯 Features
+Built using FastAPI, MongoDB, LLM orchestration, retrieval workflows, and production-oriented cloud deployment architecture.
 
-- **Risk Scoring Engine**: Deterministic, transparent scoring based on vital signs
-- **Critical Override Rules**: Immediate identification of critical patients
-- **LLM Integration**: AI-powered explanations and suggested actions
-- **Dashboard API**: Real-time patient grouping by severity
-- **MongoDB Storage**: Persistent patient data with audit trails
-- **Async/Await**: Full async implementation using Motor
-- **Comprehensive Validation**: Input validation with meaningful error messages
-- **Clean Architecture**: Modular, maintainable code structure
+---
 
-## 🛠️ Technology Stack
+# 🌐 Live Demo
 
-- **FastAPI**: Modern Python web framework
-- **Pydantic**: Data validation and serialization
-- **Motor**: Async MongoDB driver
-- **OpenAI**: LLM integration for explanations
-- **Uvicorn**: ASGI server
+Live Application:
+https://vitaltriage.ddns.net
 
-## 📋 Requirements
+Note:
+This platform is intended for demonstration, engineering evaluation, and AI workflow showcase purposes only.
 
-- Python 3.9+
-- MongoDB 4.0+
-- OpenAI API key (optional - fallback to defaults if not provided)
+---
 
-## 🚀 Quick Start
+# 🔥 Highlights
 
-### 1. Setup MongoDB
+* 🏥 AI-powered patient triage and monitoring platform
+* 🚨 Real-time severity classification and critical patient detection
+* 📊 Transparent risk scoring engine with auditability
+* 🤖 LLM-powered clinical explanations and suggested actions
+* 🧠 Hybrid AI + deterministic rule-based architecture
+* 📡 Real-time dashboard APIs grouped by patient severity
+* ☁️ Production deployment using Azure VM, Nginx, PM2, and HTTPS
+* 🔐 Secure backend architecture with environment-based configuration
 
-**Option A: Local Installation**
-```bash
-# macOS with Homebrew
-brew tap mongodb/brew
-brew install mongodb-community
-brew services start mongodb-community
+---
 
-# Or pull Docker image
-docker run -d -p 27017:27017 --name mongodb mongo:latest
-```
+# 🎯 Use Case
 
-**Option B: MongoDB Atlas Cloud**
-- Create account at https://www.mongodb.com/cloud/atlas
-- Get connection string: `mongodb+srv://user:password@cluster.mongodb.net/vitaltriage_db?retryWrites=true`
+Designed for healthcare and clinical operations scenarios to:
 
-### 2. Install Dependencies
+* Monitor patient vitals in real time
+* Prioritize patients based on severity
+* Generate AI-assisted clinical insights
+* Improve triage decision workflows
+* Support healthcare operational visibility
+* Enable intelligent patient monitoring systems
 
-```bash
+This project demonstrates a real-world AI-assisted clinical decision-support architecture with human-in-the-loop workflows.
+
+---
+
+# 📸 Screenshots
+
+## Dashboard
+
+Real-time patient monitoring dashboard with severity grouping and operational visibility.
+
+![Dashboard](./screenshots/dashboard.png)
+
+---
+
+## Patient Risk Analysis
+
+AI-assisted patient severity scoring and clinical workflow insights.
+
+![Risk Analysis](./screenshots/risk-analysis.png)
+
+---
+
+## AI Clinical Assistant
+
+LLM-powered clinical reasoning and suggested action workflows.
+
+![AI Assistant](./screenshots/ai-assistant.png)
+
+---
+
+# 🧠 AI Capabilities
+
+* AI-assisted clinical triage workflows
+* LLM-powered patient condition explanations
+* Intelligent severity classification
+* Rule-engine-driven risk scoring
+* Conversational AI integration
+* Retrieval-enhanced clinical workflows
+* Real-time decision-support orchestration
+* Transparent and auditable scoring system
+
+---
+
+# 🏗️ Architecture
+
+Frontend:
+
+* React
+* TypeScript
+* Dashboard UI
+
+Backend:
+
+* FastAPI
+* Python
+* Async APIs
+* Pydantic validation
+
+AI Layer:
+
+* LLM orchestration
+* Clinical reasoning workflows
+* Retrieval-enhanced AI pipelines
+* Prompt-driven explanation generation
+
+Database:
+
+* MongoDB Atlas
+* Async Motor driver
+
+Infrastructure:
+
+* Azure VM
+* Nginx reverse proxy
+* PM2 process management
+* HTTPS / Let's Encrypt
+
+---
+
+# 🛠️ Technology Stack
+
+| Layer      | Technologies                          |
+| ---------- | ------------------------------------- |
+| Frontend   | React, TypeScript                     |
+| Backend    | FastAPI, Python, AsyncIO              |
+| Database   | MongoDB Atlas, Motor                  |
+| AI/ML      | OpenAI / LLM APIs, Prompt Engineering |
+| Validation | Pydantic                              |
+| DevOps     | Azure VM, PM2, Nginx, HTTPS           |
+| APIs       | REST APIs                             |
+
+---
+
+# 📊 Clinical Scoring Engine
+
+## Critical Override Rules
+
+Patients are immediately classified as CRITICAL if any condition is met:
+
+* SpO2 < 85%
+* Systolic BP < 90
+* Heart Rate > 140 bpm
+* Temperature > 104°F
+* Respiratory Rate > 30
+
+---
+
+## Severity Mapping
+
+| Score | Severity |
+| ----- | -------- |
+| ≥80   | CRITICAL |
+| 60-79 | HIGH     |
+| 30-59 | MODERATE |
+| <30   | STABLE   |
+
+---
+
+# 🚀 Quick Start
+
+## Prerequisites
+
+* Python 3.9+
+* MongoDB
+* OpenAI API Key (optional)
+
+---
+
+## Local Development
+
+### Install Dependencies
+
+```bash id="vtread1"
 cd backend
 pip install -r requirements.txt
 ```
 
-### 3. Configure Environment
+---
 
-```bash
+## Configure Environment
+
+```bash id="vtread2"
 cp .env.example .env
 ```
 
-Edit `.env` and set:
-```
-MONGO_URI=mongodb://localhost:27017  # or your MongoDB Atlas connection
+---
+
+## Backend Environment Variables
+
+```env id="vtread3"
+MONGO_URI=your_mongodb_connection_string
 MONGO_DB_NAME=vitaltriage_db
-OPENAI_API_KEY=sk_...               # Optional: Get from https://platform.openai.com/api-keys
+OPENAI_API_KEY=your_openai_api_key
+ENVIRONMENT=development
+DEBUG=True
 ```
 
-### 4. Run the Server
+---
 
-```bash
+## Run Application
+
+```bash id="vtread4"
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8002
 ```
 
-The API will be available at: `http://localhost:8002`
+---
 
-- **API Docs**: http://localhost:8002/docs
-- **ReDoc**: http://localhost:8002/redoc
-- **Health Check**: http://localhost:8002/api/v1/health
+## Access
 
-## 📡 API Endpoints
+API:
+http://localhost:8002
 
-### 1. Create Patient
-```http
-POST /api/v1/patient
-Content-Type: application/json
+API Docs:
+http://localhost:8002/docs
 
-{
-  "patient_id": "P001",
-  "age": 65,
-  "gender": "M",
-  "vitals": {
-    "heart_rate": 88,
-    "spo2": 94,
-    "systolic_bp": 140,
-    "diastolic_bp": 90,
-    "temperature": 99.5,
-    "respiratory_rate": 20
-  },
-  "symptoms": ["fever", "chest pain"],
-  "notes": "Patient reports mild discomfort"
-}
-```
+ReDoc:
+http://localhost:8002/redoc
 
-**Response:**
-```json
-{
-  "patient_id": "P001",
-  "age": 65,
-  "gender": "M",
-  "vitals": {...},
-  "symptoms": ["fever", "chest pain"],
-  "notes": "Patient reports mild discomfort",
-  "score": 55,
-  "severity": "MODERATE",
-  "alert": "ℹ️ MODERATE: Standard monitoring - Patient stable but requires attention",
-  "llm_output": {
-    "explanation": "Patient shows elevated vitals...",
-    "suggested_actions": ["Monitor closely", "Administer fluids", "Continue observation"]
-  },
-  "audit_log": {
-    "rules_triggered": [],
-    "score_breakdown": {
-      "spo2": 30,
-      "bp": 20,
-      "hr": 0,
-      "rr": 20,
-      "temperature": 20,
-      "symptoms": 25,
-      "final_score": 55.0
-    }
-  },
-  "timestamp": "2024-01-15T10:30:00Z"
-}
-```
+Health Check:
+http://localhost:8002/api/v1/health
 
-### 2. Update Patient
-```http
-PUT /api/v1/patient/{patient_id}
-Content-Type: application/json
+---
 
-{
-  "vitals": {
-    "heart_rate": 85,
-    "spo2": 95,
-    "systolic_bp": 130,
-    "diastolic_bp": 85,
-    "temperature": 98.6,
-    "respiratory_rate": 18
-  },
-  "symptoms": ["fever"],
-  "notes": "Patient improving"
-}
-```
+# 📡 API Endpoints
 
-### 3. Get Patient Details
-```http
-GET /api/v1/patient/{patient_id}
-```
+| Endpoint                 | Description                   |
+| ------------------------ | ----------------------------- |
+| POST /api/v1/patient     | Create patient                |
+| PUT /api/v1/patient/{id} | Update patient                |
+| GET /api/v1/patient/{id} | Get patient details           |
+| GET /api/v1/dashboard    | Dashboard grouped by severity |
+| GET /api/v1/health       | Health check                  |
 
-### 4. Get Dashboard (Grouped by Severity)
-```http
-GET /api/v1/dashboard
-```
+---
 
-**Response:**
-```json
-{
-  "critical": [
-    {
-      "patient_id": "P003",
-      "score": 92,
-      "severity": "CRITICAL",
-      "alert": "🚨 CRITICAL: Critical condition – immediate attention required",
-      ...
-    }
-  ],
-  "high": [...],
-  "moderate": [...],
-  "stable": [...]
-}
-```
+# 🐳 Deployment
 
-## 📊 Scoring Algorithm
+Supports deployment using:
 
-### Critical Override Rules
-If ANY condition is met → CRITICAL severity
+* Azure VM
+* Docker
+* PM2
+* Nginx reverse proxy
+* HTTPS / Let's Encrypt
 
-- SpO2 < 85%
-- Systolic BP < 90
-- Heart Rate > 140 bpm
-- Temperature > 104°F
-- Respiratory Rate > 30
+---
 
-### Range-Based Scoring (0-100)
+# ☁️ Production Infrastructure
 
-| Vital | Range | Score |
-|-------|-------|-------|
-| SpO2 | ≥95% | 0 |
-| SpO2 | 90-94% | 30 |
-| SpO2 | 85-89% | 70 |
-| SpO2 | <85% | 100 |
+* Azure VM deployment
+* Nginx reverse proxy
+* PM2 process management
+* HTTPS-enabled deployment
+* MongoDB Atlas
+* Environment-based configuration
+* Async backend processing
 
-Similar logic applied to HR, BP, Temperature, RR
+---
 
-### Weight Distribution
+# 🔐 Security
 
-- SpO2: 40%
-- BP: 20%
-- HR: 15%
-- RR: 10%
-- Temperature: 10%
-- Symptoms: 5%
+* Environment-variable-based secret management
+* HTTPS-enabled deployment
+* Request validation using Pydantic
+* Secure API configuration
+* MongoDB Atlas authentication
+* Production-ready deployment practices
 
-### Severity Mapping
+---
 
-| Score | Severity |
-|-------|----------|
-| ≥80 | CRITICAL |
-| 60-79 | HIGH |
-| 30-59 | MODERATE |
-| <30 | STABLE |
+# 📂 Project Structure
 
-## 🧪 Example Requests
-
-### Example 1: Critical Patient
-```bash
-curl -X POST "http://localhost:8002/api/v1/patient" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "patient_id": "P_CRITICAL_001",
-    "age": 72,
-    "gender": "F",
-    "vitals": {
-      "heart_rate": 145,
-      "spo2": 82,
-      "systolic_bp": 85,
-      "diastolic_bp": 50,
-      "temperature": 105,
-      "respiratory_rate": 32
-    },
-    "symptoms": ["breathlessness", "chest pain"],
-    "notes": "Severe respiratory distress"
-  }'
-```
-
-### Example 2: Stable Patient
-```bash
-curl -X POST "http://localhost:8002/api/v1/patient" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "patient_id": "P_STABLE_001",
-    "age": 45,
-    "gender": "M",
-    "vitals": {
-      "heart_rate": 72,
-      "spo2": 98,
-      "systolic_bp": 118,
-      "diastolic_bp": 76,
-      "temperature": 98.6,
-      "respiratory_rate": 16
-    },
-    "symptoms": [],
-    "notes": "Routine checkup"
-  }'
-```
-
-### Example 3: Get Dashboard
-```bash
-curl -X GET "http://localhost:8002/api/v1/dashboard" \
-  -H "Content-Type: application/json"
-```
-
-## 📁 Project Structure
-
-```
+```bash id="vtread5"
 backend/
 ├── app/
-│   ├── __init__.py
-│   ├── main.py                 # FastAPI app entry point
 │   ├── routes/
-│   │   ├── __init__.py
-│   │   └── patient_routes.py  # API endpoints
 │   ├── services/
-│   │   ├── __init__.py
-│   │   ├── scoring_service.py # Risk scoring logic
-│   │   ├── rules_engine.py    # Critical rules
-│   │   ├── llm_service.py     # LLM integration
-│   │   └── alert_service.py   # Alert generation
 │   ├── models/
-│   │   ├── __init__.py
-│   │   └── patient_model.py   # Pydantic models
 │   ├── db/
-│   │   ├── __init__.py
-│   │   └── mongo.py           # MongoDB operations
 │   └── utils/
-│       ├── __init__.py
-│       └── validators.py      # Input validation
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
 
-## 🔑 Environment Variables
+---
 
-```env
-# MongoDB
-MONGO_URI              # MongoDB connection string
-MONGO_DB_NAME          # Database name (default: vitaltriage_db)
+# ⚙️ Performance & Scalability
 
-# OpenAI
-OPENAI_API_KEY         # OpenAI API key (optional)
-
-# Application
-ENVIRONMENT            # development/production
-DEBUG                  # True/False
-```
-
-## 📝 Logging
-
-The application logs to stdout with the following format:
-```
-2024-01-15 10:30:00,123 - app.routes.patient_routes - INFO - Patient created: P001 - Severity: MODERATE
-```
-
-## 🧪 Testing
-
-Run tests:
-```bash
-pytest tests/ -v
-```
-
-Run with coverage:
-```bash
-pytest tests/ --cov=app --cov-report=html
-```
-
-## 🚨 Error Handling
-
-The API returns standardized error responses:
-
-```json
-{
-  "detail": "SpO2 must be between 0 and 100"
-}
-```
-
-**HTTP Status Codes:**
-- 200: Success
-- 201: Created
-- 400: Bad Request
-- 404: Not Found
-- 422: Validation Error
-- 500: Internal Server Error
-
-## ⚙️ Performance Considerations
-
-- **Async Operations**: All database and API calls are non-blocking
-- **Connection Pooling**: Motor handles connection pooling automatically
-- **Indexing**: MongoDB indexes created on:
-  - `patient_id` (unique)
-  - `severity`
-  - `timestamp`
-  - `score`
-- **Validation**: Input validation at the API layer
-
-## 🔒 Security Notes
-
-For production:
-1. Set `CORS` origins to specific domains
-2. Use HTTPS
-3. Implement authentication/authorization
-4. Use secrets manager for API keys
-5. Enable MongoDB authentication
-6. Add rate limiting
-7. Implement request logging
-
-## 📚 Additional Resources
-
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Motor Documentation](https://motor.readthedocs.io/)
-- [OpenAI API Documentation](https://platform.openai.com/docs/)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
-
-## 📞 Support
-
-For issues or questions:
-1. Check the API documentation at `/docs`
-2. Review logs for error details
-3. Verify MongoDB connection
-4. Check environment variables
+* Async/Await implementation
+* Non-blocking database operations
+* MongoDB indexing support
+* Modular service architecture
+* Production-oriented API design
+* Scalable AI workflow integration
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: January 2024
+# 🧪 Testing
+
+Run tests:
+
+```bash id="vtread6"
+pytest tests/ -v
+```
+
+Run coverage:
+
+```bash id="vtread7"
+pytest tests/ --cov=app --cov-report=html
+```
+
+---
+
+# 🚢 Cloud Readiness
+
+Supports deployment to:
+
+* Azure VM
+* Docker-based infrastructure
+* AWS
+* Render
+* Railway
+* Kubernetes-compatible environments
+
+---
+
+# 👨‍💻 Author
+
+Shaik Rahaman
+
+LinkedIn:
+https://www.linkedin.com/in/shaikrahaman
+
+GitHub:
+https://github.com/shaik-rahaman
+
+---
+
+# 📝 License
+
+© 2026 VitalTriage
