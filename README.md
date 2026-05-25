@@ -83,6 +83,12 @@ LLM-powered clinical reasoning and suggested action workflows.
 
 ---
 
+## 🏗️ System Architecture
+
+<img width="745" height="825" alt="VitalTriage-Architecture Diagram" src="https://github.com/user-attachments/assets/114bcaa5-28ca-43f7-929b-8256d2e081fd" />
+
+---
+
 # 🏗️ Architecture
 
 Frontend:
